@@ -1,0 +1,6 @@
+ *= require application
+ *= require age-verification
+ *= require data-table
+ *= require mantis
+ *= require style
+ *= require jquery-ui

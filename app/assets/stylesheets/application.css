@@ -11,7 +11,6 @@
  * file per style scope.
  *
  *= require_tree .
- *= require_self
  *= require jquery-ui
  */
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
