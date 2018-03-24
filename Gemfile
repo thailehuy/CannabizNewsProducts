@@ -59,6 +59,7 @@ gem 'font-awesome-sass', '~> 4.7'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'active_admin_role'
+gem 'active_skin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'

@@ -41,6 +41,7 @@ GEM
     active_admin_role (0.1.1)
       activeadmin (>= 1.0.0.pre4)
       cancancan (>= 1.15.0)
+    active_skin (0.0.12)
     activejob (4.2.7.1)
       activesupport (= 4.2.7.1)
       globalid (>= 0.3.0)
@@ -547,6 +548,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_admin_role
+  active_skin
   activeadmin!
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.3.6)
