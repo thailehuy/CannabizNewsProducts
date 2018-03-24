@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  
+  
   #SIDEKIQ Routes
   require 'sidekiq/web'
   require 'sidekiq/cron/web'
@@ -54,9 +58,9 @@ Rails.application.routes.draw do
   get 'errors/application_error'
   
   #ERROR HANDLING
-  match "/404", :to => "errors#not_found", :via => :all
-  match "/500", :to => "errors#internal_server_error", :via => :all
-  match "/503", :to => "errors#application_error", :via => :all
+  #match "/404", :to => "errors#not_found", :via => :all
+  #match "/500", :to => "errors#internal_server_error", :via => :all
+  #match "/503", :to => "errors#application_error", :via => :all
   
   #RESET PASSWORD
   resources :password_resets, only: [:new, :create, :edit, :update]

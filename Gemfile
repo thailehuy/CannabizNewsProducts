@@ -55,6 +55,11 @@ gem 'jpegoptim', '~> 0.2.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'font-awesome-sass', '~> 4.7'
 
+#ACTIVE-ADMIN STUFF
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+gem 'active_admin_role'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
 
