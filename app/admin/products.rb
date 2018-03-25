@@ -62,16 +62,9 @@ ActiveAdmin.register Product do
 
 	index do 
 		column :id
-
-		column :name do |product|
-			best_in_place product, :name, :type => :input
-		end
-
-		column :description  do |product|
-		  best_in_place product, :description, :type => :textarea
-		end
+		column :name
+		column :description
 		column :category
-		
 		column :featured_product
 		actions
 	end

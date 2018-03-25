@@ -4,4 +4,8 @@ class DispensaryAdminUser < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
+         
+  
+  #connect to dispensary
+  belongs_to :dispensary
 end

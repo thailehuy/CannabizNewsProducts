@@ -1,5 +1,13 @@
-ActiveAdmin.register DispensaryAdminUser do
-	permit_params :email, :password, :password_confirmation, :role, :dispensary
+ActiveAdmin.register DispensaryAdminUser, namespace: :dispensary_admin do
+	
+	permit_params :email, :password, :password_confirmation
+
+  show do
+		attributes_table do
+			row :email
+			row :dispensary
+		end
+	end
 
   index do
     selectable_column
@@ -9,7 +17,6 @@ ActiveAdmin.register DispensaryAdminUser do
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
-    column :role
     actions
   end
 
@@ -20,13 +27,11 @@ ActiveAdmin.register DispensaryAdminUser do
   filter :created_at
 
   form do |f|
-    f.semantic_errors *f.object.errors.keys
     f.inputs do
       f.input :email
       f.input :password
       f.input :password_confirmation
       f.input :dispensary
-      f.input :role
     end
     f.actions
   end

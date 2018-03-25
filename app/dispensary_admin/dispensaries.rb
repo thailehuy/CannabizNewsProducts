@@ -1,8 +1,9 @@
 ActiveAdmin.register Dispensary, namespace: :dispensary_admin do
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
+	
+	
+	belongs_to :dispensary_admin_user
+	
+	permit_params :name, :description, :featured_product, :category, :image
 #
 # or
 #
@@ -11,5 +12,58 @@ ActiveAdmin.register Dispensary, namespace: :dispensary_admin do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+	
+	#use with friendly id
+	before_filter :only => [:show, :edit, :update, :delete] do
+		@dispensary = Dispensary.friendly.find(params[:id])
+	end
+
+	#scopes
+	scope :all, default: true
+	
+	#save queries
+	includes :state
+	
+	#import csv (might make my own for the update)
+	active_admin_import
+	
+
+	#edit and new form - multipart allows for carrierwave connection
+	form(:html => { :multipart => true }) do |f|
+		f.inputs "Product" do
+			f.input :name
+			f.input :image, :as => :file
+			f.input :location
+			f.input :city
+			f.input :state
+		end
+		f.actions
+	end
+	
+	show do
+		attributes_table do
+			row :name
+			row :image
+			row :location
+			row :city
+			row :state
+		end
+	end
+
+
+	#filters on the index page, if not specified we see all
+	filter :name
+	filter :state
+	filter :city
+
+	index do 
+		column :id
+		column :name
+		column :image
+		column :location
+		column :city
+		column :state
+		actions
+	end
 
 end
