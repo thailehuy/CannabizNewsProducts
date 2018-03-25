@@ -69,8 +69,12 @@ class ApplicationController < ActionController::Base
   end
   
   #activeadmin
-  def authenticate_admin_user
-    redirect_to admin_dashboard
+  # def authenticate_admin_user!
+  #   redirect_to dispensary_admin_dashboard_path unless current_user.try(:admin?)
+  # end
+  
+  def authenticate_dispensary_admin_user!
+    redirect_to signup_path
   end
   
   

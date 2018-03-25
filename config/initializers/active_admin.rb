@@ -15,12 +15,17 @@ ActiveAdmin.setup do |config|
   config.namespace :admin do |admin|
     admin.comments = false
     admin.site_title = "Cannabiz Network"
+    #auth
+    admin.authentication_method = :authenticate_admin_user!
+    admin.current_user_method = :current_admin_user
   end
   
   config.namespace :dispensary_admin do |dispensary_admin|
     dispensary_admin.comments = false
     dispensary_admin.site_title = "Cannabiz Network"
     #dispensary_admin.root_to = 'dispensary#show'
+    #auth
+    dispensary_admin.authentication_method = :authenticate_dispensary_admin_user!
   end
   
   #LOGIC TO MAKE ACTIVEADMIN WORK WITH FRIENDLY IDS
@@ -67,7 +72,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  config.authentication_method = :authenticate_admin_user!
+  # config.authentication_method = :authenticate_admin_user!
 
   # == User Authorization
   #
@@ -99,7 +104,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # (within the application controller) to return the currently logged in user.
-  config.current_user_method = :current_admin_user
+  # config.current_user_method = :current_admin_user
 
   # == Logging Out
   #
