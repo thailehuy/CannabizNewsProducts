@@ -41,4 +41,6 @@ Rails.application.configure do
   
   #error handling
   config.consider_all_requests_local = false
+  
+  config.serve_static_assets = true
 end

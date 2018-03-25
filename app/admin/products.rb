@@ -50,6 +50,11 @@ ActiveAdmin.register Product do
 		end
 	end
 
+
+	filter :name
+	filter :category
+	filter :featured_product
+
 	index do 
 		column :id
 
@@ -62,8 +67,6 @@ ActiveAdmin.register Product do
 		end
 		column :category
 		
-		
-
 		column :featured_product
 		actions
 	end

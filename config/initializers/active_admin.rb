@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Cannabiz News"
+  config.site_title = "Cannabiz Network"
   
   
   #STEVE GENERAL ADDITIONS
@@ -13,6 +13,7 @@ ActiveAdmin.setup do |config|
   
   config.namespace :admin do |admin|
     admin.comments = false
+    admin.site_title = "Cannabiz Network"
   end
   
   #LOGIC TO MAKE ACTIVEADMIN WORK WITH FRIENDLY IDS

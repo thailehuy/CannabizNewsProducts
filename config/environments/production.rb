@@ -82,6 +82,8 @@ Rails.application.configure do
   #be able to include image in email
   config.action_mailer.asset_host = 'http://cannabiznetwork.com'
   
+  config.serve_static_assets = true
+  
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
