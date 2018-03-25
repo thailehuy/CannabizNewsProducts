@@ -28,20 +28,20 @@ class Product < ActiveRecord::Base
     validates_uniqueness_of :name, :scope => :category_id #no duplicate products per category
     
     #import CSV file
-    def self.import(file)
-        CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
+    # def self.import(file)
+    #     CSV.foreach(file.path, headers: true, skip_blanks: true) do |row|
             
-            #change to update record if id matches
-            product_hash = row.to_hash
-            product = self.where(id: product_hash["id"])
+    #         #change to update record if id matches
+    #         product_hash = row.to_hash
+    #         product = self.where(id: product_hash["id"])
             
-            if product.present? 
-                product.first.update_attributes(product_hash)
-            else
-                Product.create! product_hash
-            end
-        end
-    end    
+    #         if product.present? 
+    #             product.first.update_attributes(product_hash)
+    #         else
+    #             Product.create! product_hash
+    #         end
+    #     end
+    # end    
     
     #export CSV file
     def self.to_csv

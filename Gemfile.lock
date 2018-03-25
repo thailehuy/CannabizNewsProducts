@@ -15,6 +15,14 @@ GIT
       sprockets (>= 3.0, < 4.1)
       sprockets-es6 (>= 0.9.2)
 
+GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: 1b779e60ea912ab9c39d5c999b00c8ac44a8e535
+  specs:
+    best_in_place (3.1.1)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,6 +46,10 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_admin_import (2.1.2)
+      activeadmin (>= 0.6.0)
+      activerecord-import (~> 0.4, >= 0.4.1)
+      rubyzip (~> 1.0, >= 1.0.0)
     active_admin_role (0.1.1)
       activeadmin (>= 1.0.0.pre4)
       cancancan (>= 1.15.0)
@@ -52,6 +64,8 @@ GEM
       activemodel (= 4.2.7.1)
       activesupport (= 4.2.7.1)
       arel (~> 6.0)
+    activerecord-import (0.22.0)
+      activerecord (>= 3.2)
     activesupport (4.2.7.1)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
@@ -458,6 +472,7 @@ GEM
       sexp_processor (~> 4.6)
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
+    rubyzip (1.2.1)
     rufus-scheduler (3.4.0)
       et-orbi (~> 1.0)
     sass (3.4.23)
@@ -547,10 +562,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_admin_import
   active_admin_role
   active_skin
   activeadmin!
   bcrypt (~> 3.1.7)
+  best_in_place!
   bootstrap-sass (~> 3.3.6)
   bootstrap-will_paginate (= 0.0.10)
   byebug
