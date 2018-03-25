@@ -3,8 +3,14 @@ class Dispensary < ActiveRecord::Base
     #has_many :dispensary_photos --> not using right now
     
     belongs_to :state
-    has_one :dispensary_admin_user
     validates :name, presence: true, length: {minimum: 1, maximum: 300}
+    
+    #admin
+    has_one :dispensary_admin_user
+    #scope :featured, -> { where(featured_product: true).where.not(image: nil) }
+    # scope :mine, -> { 
+    #     DispensaryAdminUser.where(:id => current_user.Id).dispensaries.first
+    # }
     
     #many to many with dispensary sources
     has_many :dispensary_sources

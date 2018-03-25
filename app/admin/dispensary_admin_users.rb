@@ -1,5 +1,5 @@
 ActiveAdmin.register DispensaryAdminUser do
-	permit_params :email, :password, :password_confirmation, :role, :dispensary
+	permit_params :email, :password, :password_confirmation, :dispensary_id, :role
 
   index do
     selectable_column
@@ -25,7 +25,10 @@ ActiveAdmin.register DispensaryAdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
-      f.input :dispensary
+      
+      f.input :dispensary_id, :label => 'Dispensary', :as => :select, 
+        :collection => Dispensary.all.map{|u| ["#{u.name}", u.id]}
+
       f.input :role
     end
     f.actions

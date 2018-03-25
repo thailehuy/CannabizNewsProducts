@@ -1,17 +1,6 @@
 ActiveAdmin.register Dispensary, namespace: :dispensary_admin do
 	
-	
-	belongs_to :dispensary_admin_user
-	
 	permit_params :name, :description, :featured_product, :category, :image
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
 	
 	#use with friendly id
 	before_filter :only => [:show, :edit, :update, :delete] do
@@ -19,7 +8,7 @@ ActiveAdmin.register Dispensary, namespace: :dispensary_admin do
 	end
 
 	#scopes
-	scope :all, default: true
+	scope :mine, default: true
 	
 	#save queries
 	includes :state

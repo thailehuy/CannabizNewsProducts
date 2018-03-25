@@ -2,7 +2,7 @@ ActiveAdmin.register Product do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-	permit_params :name, :description, :featured_product, :category, :image
+	permit_params :name, :description, :featured_product, :category_id, :image
 #
 # or
 #
@@ -30,12 +30,15 @@ ActiveAdmin.register Product do
 
 	#edit and new form - multipart allows for carrierwave connection
 	form(:html => { :multipart => true }) do |f|
+		f.semantic_errors *f.object.errors.keys
 		f.inputs "Product" do
 			f.input :name
 			f.input :description
 			f.input :image, :as => :file
 			f.input :featured_product
-			f.input :category
+			
+			f.input :category_id, :label => 'Category', :as => :select, 
+        		:collection => Category.products.map{|u| ["#{u.name}", u.id]}
 		end
 		f.actions
 	end
