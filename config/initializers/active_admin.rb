@@ -16,17 +16,25 @@ ActiveAdmin.setup do |config|
     admin.comments = false
     admin.site_title = "Cannabiz Network"
     #auth
-    admin.authentication_method = :authenticate_admin_user!
-    admin.current_user_method = :current_admin_user
+    # admin.authentication_method = :authenticate_admin_user!
+    # admin.current_user_method = :current_admin_user
+    # admin.logout_link_path = :destroy_admin_user_session_path
   end
   
   config.namespace :dispensary_admin do |dispensary_admin|
     dispensary_admin.comments = false
     dispensary_admin.site_title = "Cannabiz Network"
+    #dispensary_admin.logout_link_method = :delete
     #dispensary_admin.root_to = 'dispensary#show'
     #auth
-    dispensary_admin.authentication_method = :authenticate_dispensary_admin_user!
+    # dispensary_admin.authentication_method = :authenticate_dispensary_admin_user!
+    # dispensary_admin.current_user_method = :current_dispensary_admin_user
+    # dispensary_admin.logout_link_path = :destroy_dispensary_admin_user_session_path
   end
+  
+  config.authentication_method = :authenticate_admin_user!
+  config.current_user_method = :current_admin_user
+  config.logout_link_path = :destroy_admin_user_session_path
   
   #LOGIC TO MAKE ACTIVEADMIN WORK WITH FRIENDLY IDS
   ActiveAdmin::ResourceController.class_eval do
@@ -116,7 +124,7 @@ ActiveAdmin.setup do |config|
   # will call the method to return the path.
   #
   # Default:
-  config.logout_link_path = :destroy_admin_user_session_path
+  
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..

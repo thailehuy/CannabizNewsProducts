@@ -69,13 +69,29 @@ class ApplicationController < ActionController::Base
   end
   
   #activeadmin
+  def after_sign_in_path_for(resource)
+    if resource.role == 99
+      admin_root_path
+    else
+      dispensary_admin_root_path
+    end
+  end
+  
   # def authenticate_admin_user!
   #   redirect_to dispensary_admin_dashboard_path unless current_user.try(:admin?)
   # end
   
-  def authenticate_dispensary_admin_user!
-    redirect_to signup_path
-  end
+  # def authenticate_dispensary_admin_user!
+  #   redirect_to signup_path
+  # end
+  
+  # def authenticate_dispensary_admin_user!
+  # redirect_to new_dispensary_admin_user_session_path unless current_dispensary_admin_user.present?
+  # end
+  
+  # def current_dispensary_admin_user
+  #   @current_user ||= DispensaryAdminUser.find(session[:id]) if session[:id]
+  # end
   
   
   #redirect to homepage on error

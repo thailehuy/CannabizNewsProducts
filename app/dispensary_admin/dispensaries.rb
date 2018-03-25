@@ -8,7 +8,7 @@ ActiveAdmin.register Dispensary, namespace: :dispensary_admin do
 	end
 
 	#scopes
-	scope :mine, default: true
+	#scope :mine, default: true
 	
 	#save queries
 	includes :state
