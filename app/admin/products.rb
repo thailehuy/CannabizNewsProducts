@@ -12,19 +12,23 @@ ActiveAdmin.register Product do
 #   permitted
 # end
 	
+	#use with friendly id
 	before_filter :only => [:show, :edit, :update, :delete] do
 		@product = Product.friendly.find(params[:id])
 	end
 
-	scope :featured #allows us to filter the index
-	includes :category #saves the query
+	#scopes
+	scope :all, default: true
+	scope :featured
 	
-	#active_admin_import #import csv
+	#save queries
+	includes :category
 	
-	#import csv
+	#import csv (might make my own for the update)
 	active_admin_import
 	
 
+	#edit and new form - multipart allows for carrierwave connection
 	form(:html => { :multipart => true }) do |f|
 		f.inputs "Product" do
 			f.input :name
@@ -51,6 +55,7 @@ ActiveAdmin.register Product do
 	end
 
 
+	#filters on the index page, if not specified we see all
 	filter :name
 	filter :category
 	filter :featured_product, as: :check_boxes

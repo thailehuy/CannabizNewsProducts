@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180325031035) do
+ActiveRecord::Schema.define(version: 20180325150026) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -138,6 +138,24 @@ ActiveRecord::Schema.define(version: 20180325031035) do
   end
 
   add_index "dispensaries", ["slug"], name: "index_dispensaries_on_slug", unique: true
+
+  create_table "dispensary_admin_users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "dispensary_admin_users", ["email"], name: "index_dispensary_admin_users_on_email", unique: true
+  add_index "dispensary_admin_users", ["reset_password_token"], name: "index_dispensary_admin_users_on_reset_password_token", unique: true
 
   create_table "dispensary_source_products", force: :cascade do |t|
     t.integer  "dispensary_source_id"

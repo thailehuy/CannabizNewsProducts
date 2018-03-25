@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+  #devise_for :dispensary_admin_users, ActiveAdmin::Devise.config
+  devise_for :dispensary_admin_users, ActiveAdmin::Devise.config.merge({path: '/dispensary_admin'})
   ActiveAdmin.routes(self)
   
   

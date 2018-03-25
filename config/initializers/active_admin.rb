@@ -20,6 +20,7 @@ ActiveAdmin.setup do |config|
   config.namespace :dispensary_admin do |dispensary_admin|
     dispensary_admin.comments = false
     dispensary_admin.site_title = "Cannabiz Network"
+    #dispensary_admin.root_to = 'dispensary#show'
   end
   
   #LOGIC TO MAKE ACTIVEADMIN WORK WITH FRIENDLY IDS

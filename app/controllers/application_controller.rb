@@ -68,6 +68,12 @@ class ApplicationController < ActionController::Base
     expires_in 10.days, :public => true
   end
   
+  #activeadmin
+  def authenticate_admin_user
+    redirect_to admin_dashboard
+  end
+  
+  
   #redirect to homepage on error
   rescue_from ActionView::MissingTemplate, :with => :handle_error
   rescue_from ActiveRecord::RecordNotFound, :with => :handle_error
