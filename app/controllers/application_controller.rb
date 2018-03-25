@@ -78,21 +78,18 @@ class ApplicationController < ActionController::Base
   end
   
   # def authenticate_admin_user!
-  #   redirect_to dispensary_admin_dashboard_path unless current_user.try(:admin?)
+  #   redirect_to admin_root_path
+    
+    # if current_admin_user.present?
+    #   if current_admin_user.role == 99
+    #     redirect_to admin_root_path
+    #   else
+    #     redirect_to dispensary_admin_root_path
+    #   end
+    # else 
+    #   redirect_to new_admin_user_session_path
+    # end
   # end
-  
-  # def authenticate_dispensary_admin_user!
-  #   redirect_to signup_path
-  # end
-  
-  # def authenticate_dispensary_admin_user!
-  # redirect_to new_dispensary_admin_user_session_path unless current_dispensary_admin_user.present?
-  # end
-  
-  # def current_dispensary_admin_user
-  #   @current_user ||= DispensaryAdminUser.find(session[:id]) if session[:id]
-  # end
-  
   
   #redirect to homepage on error
   rescue_from ActionView::MissingTemplate, :with => :handle_error

@@ -1,5 +1,5 @@
 ActiveAdmin.register AdminUser do
-  permit_params :email, :password, :password_confirmation, :role
+  permit_params :email, :password, :password_confirmation,  :dispensary_id, :role
 
   index do
     selectable_column
@@ -8,6 +8,7 @@ ActiveAdmin.register AdminUser do
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
+    column :dispensary_id
     column :role
     actions
   end
@@ -16,6 +17,7 @@ ActiveAdmin.register AdminUser do
   filter :current_sign_in_at
   filter :sign_in_count
   filter :created_at
+  filter :dispensary_id
   filter :role
 
   form do |f|
@@ -24,6 +26,10 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      
+      f.input :dispensary_id, :label => 'Dispensary', :as => :select, 
+        :collection => Dispensary.all.map{|u| ["#{u.name}", u.id]}
+
       f.input :role
     end
     f.actions

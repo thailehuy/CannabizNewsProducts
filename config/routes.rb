@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-  #devise_for :dispensary_admin_users, ActiveAdmin::Devise.config
-  # devise_for :dispensary_admin_users, path: 'dispensary_admin', 
-  #     controllers: {sessions: "dispensary_admin_users/sessions"}
-    #ActiveAdmin::Devise.config.merge({path: '/dispensary_admin'})
   ActiveAdmin.routes(self)
-  
   
   #SIDEKIQ Routes
   require 'sidekiq/web'

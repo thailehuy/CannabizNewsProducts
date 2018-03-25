@@ -6,11 +6,10 @@ class Dispensary < ActiveRecord::Base
     validates :name, presence: true, length: {minimum: 1, maximum: 300}
     
     #admin
-    has_one :dispensary_admin_user
-    #scope :featured, -> { where(featured_product: true).where.not(image: nil) }
-    # scope :mine, -> { 
-    #     DispensaryAdminUser.where(:id => current_user.Id).dispensaries.first
-    # }
+    has_one :admin_user
+    scope :mine, -> { 
+        AdminUser.where(:id => current_user.id).dispensaries.first
+    }
     
     #many to many with dispensary sources
     has_many :dispensary_sources
