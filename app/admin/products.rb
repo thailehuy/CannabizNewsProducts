@@ -53,7 +53,7 @@ ActiveAdmin.register Product do
 
 	filter :name
 	filter :category
-	filter :featured_product
+	filter :featured_product, as: :check_boxes
 
 	index do 
 		column :id

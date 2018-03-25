@@ -1,19 +1,25 @@
 ActiveAdmin.setup do |config|
-  # == Site Title
-  #
-  # Set the title that is displayed on the main layout
-  # for each of the active admin pages.
-  #
-  config.site_title = "Cannabiz Network"
-  
-  
+
   #STEVE GENERAL ADDITIONS
+  config.site_title = "Cannabiz Network"
   config.footer = "Cannabiz Network"
   config.localize_format = :short
+  config.site_title_link = "https://cannabiznetwork.com" #take user to homepage from config title
+  config.default_namespace = :admin
+  config.favicon = 'favicon.ico'
+  config.default_per_page = 50 #pagination
   
+  config.load_paths = [File.join(Rails.root,'app','admin'), File.join(Rails.root,'app','dispensary_admin')]
+  
+  #NAMESPACES
   config.namespace :admin do |admin|
     admin.comments = false
     admin.site_title = "Cannabiz Network"
+  end
+  
+  config.namespace :dispensary_admin do |dispensary_admin|
+    dispensary_admin.comments = false
+    dispensary_admin.site_title = "Cannabiz Network"
   end
   
   #LOGIC TO MAKE ACTIVEADMIN WORK WITH FRIENDLY IDS
@@ -23,20 +29,6 @@ ActiveAdmin.setup do |config|
       scoped_collection.find_by(finder => params[:id])
     end
   end
-  
-  
-
-  # Set the link url for the title. For example, to take
-  # users to your main site. Defaults to no link.
-  #
-  # config.site_title_link = "/"
-
-  # Set an optional image to be displayed for the header
-  # instead of a string (overrides :site_title)
-  #
-  # Note: Aim for an image that's 21px high so it fits in the header.
-  #
-  # config.site_title_image = "logo.png"
 
   # == Default Namespace
   #
@@ -82,7 +74,7 @@ ActiveAdmin.setup do |config|
   # method in a before filter of all controller actions to
   # ensure that there is a user with proper rights. You can use
   # CanCanAdapter or make your own. Please refer to documentation.
-  # config.authorization_adapter = ActiveAdmin::CanCanAdapter
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
 
   # In case you prefer Pundit over other solutions you can here pass
   # the name of default policy class. This policy will be used in every
@@ -173,7 +165,6 @@ ActiveAdmin.setup do |config|
   # To understand how to localize your app with I18n, read more at
   # https://github.com/svenfuchs/i18n/blob/master/lib%2Fi18n%2Fbackend%2Fbase.rb#L52
   #
-  config.localize_format = :long
 
   # == Setting a Favicon
   #
@@ -297,12 +288,6 @@ ActiveAdmin.setup do |config|
   #
   # config.include_default_association_filters = true
 
-  # == Footer
-  #
-  # By default, the footer shows the current Active Admin version. You can
-  # override the content of the footer here.
-  #
-  # config.footer = 'my custom footer text'
 
   # == Sorting
   #
