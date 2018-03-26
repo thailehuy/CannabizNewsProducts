@@ -7,9 +7,10 @@ class Dispensary < ActiveRecord::Base
     
     #admin
     has_one :admin_user
-    scope :mine, -> { 
-        AdminUser.where(:id => current_user.id).dispensaries.first
-    }
+    belongs_to :admin_user
+    # scope :mine, -> { 
+    #     AdminUser.where(:id => @current_admin_user.id).dispensaries.first
+    # }
     
     #many to many with dispensary sources
     has_many :dispensary_sources

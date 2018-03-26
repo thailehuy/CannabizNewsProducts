@@ -62,6 +62,7 @@ gem 'active_admin_role'
 gem 'active_skin'
 gem "active_admin_import"
 gem 'best_in_place', github: 'bernat/best_in_place'
+gem 'cancancan'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'

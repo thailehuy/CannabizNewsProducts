@@ -35,6 +35,9 @@ ActiveAdmin.setup do |config|
   config.authentication_method = :authenticate_admin_user!
   config.current_user_method = :current_admin_user
   config.logout_link_path = :destroy_admin_user_session_path
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
+  config.cancan_ability_class = "Ability"
+  config.on_unauthorized_access = :access_denied
   
   #LOGIC TO MAKE ACTIVEADMIN WORK WITH FRIENDLY IDS
   ActiveAdmin::ResourceController.class_eval do

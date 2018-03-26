@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  #check_authorization
   
   #set lists before all actions
   before_action :populate_lists
@@ -76,6 +77,14 @@ class ApplicationController < ActionController::Base
       dispensary_admin_root_path
     end
   end
+  
+  def access_denied(exception)
+    redirect_to root_path, alert: exception.message
+  end
+  
+  # def current_admin_user
+    
+  # end
   
   # def authenticate_admin_user!
   #   redirect_to admin_root_path

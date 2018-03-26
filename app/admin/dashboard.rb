@@ -1,5 +1,9 @@
 ActiveAdmin.register_page "Dashboard" do
-
+  
+  if @current_admin_user.present? && @current_admin_user.role != 99
+	  redirect_to dispensary_admin_root_path
+	end
+  
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   content title: proc{ I18n.t("active_admin.dashboard") } do

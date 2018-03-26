@@ -1,6 +1,8 @@
 ActiveAdmin.register_page "Dashboard", namespace: :dispensary_admin do
 
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+  
+  #@dispensary = AdminUser.where(id: @current_admin_user.id).first.dispensary
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
     # div class: "blank_slate_container", id: "dashboard_default_message" do
@@ -10,16 +12,39 @@ ActiveAdmin.register_page "Dashboard", namespace: :dispensary_admin do
     #   end
     # end
     
-    # section "New Products" do 
-    #   table_for Product.featured.limit(5) do
-    #     column :name do |product|
-    #       link_to product.name, [:admin, product]
-    #     end
-    #     column :description
-    #     column :category
-    #   end
-    #   strong {link_to "View All Products", admin_products_path }
-    # end
+    section "Your Dispensary" do 
+      table_for Dispensary.first do
+        column :name
+        column :location
+        column :city
+        column :state
+        #actions
+      end
+    end
+    
+    section "Your Products" do 
+      # table_for DispensarySourceProduct.limit(10) do
+      #   column :name do |dispensary|
+      #     link_to dispensary.name, [:admin, dispensary]
+      #   end
+      #   column :location
+      #   column :city
+      #   column :state
+      # end
+      # strong {link_to "View All Products", admin_products_path }
+    end
+    
+    section "Your Orders" do 
+      # table_for DispensarySourceProduct.limit(10) do
+      #   column :name do |dispensary|
+      #     link_to dispensary.name, [:admin, dispensary]
+      #   end
+      #   column :location
+      #   column :city
+      #   column :state
+      # end
+      # strong {link_to "View All Products", admin_products_path }
+    end
       
 
     # Here is an example of a simple dashboard with columns and panels.

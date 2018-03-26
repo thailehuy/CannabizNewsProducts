@@ -1,0 +1,21 @@
+class Ability
+  include CanCan::Ability
+
+  def initialize(user)
+  	
+  	can :read, :all # permissions for every user, even if not logged in 
+  	
+    if user.present?
+    	if user.role = 99
+	  		can :manage, :all
+	  	else
+		    can :read, Dispensary
+		    can :read, AdminUser
+		    can :manage, AdminUser, id: user.id
+		    can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "dispensary_admin"
+		end
+    end
+  	
+  end
+
+end
