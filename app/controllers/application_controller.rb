@@ -82,6 +82,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: exception.message
   end
   
+  def require_no_authentication
+    
+  end
+  
   # def current_admin_user
     
   # end

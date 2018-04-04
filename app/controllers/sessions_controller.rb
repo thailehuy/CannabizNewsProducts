@@ -21,9 +21,17 @@ class SessionsController < ApplicationController
     end
     
     def destroy
+        sign_out_user
         session[:user_id] = nil
         #flash[:success] = "You have logged out"
         redirect_to root_path
+    end
+    
+    def sign_out_user
+      current_user.update_attribute(:remember_token,
+                                  Adult.digest(Adult.new_remember_token))
+      cookies.delete(:remember_token)
+      self.current_user = nil
     end
 
 end

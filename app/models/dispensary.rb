@@ -15,6 +15,7 @@ class Dispensary < ActiveRecord::Base
     #many to many with dispensary sources
     has_many :dispensary_sources
     has_many :sources, through: :dispensary_sources
+    accepts_nested_attributes_for :dispensary_sources, allow_destroy: false
     
     #geocode location
     geocoded_by :location

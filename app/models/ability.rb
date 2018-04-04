@@ -1,5 +1,6 @@
 class Ability
   include CanCan::Ability
+  include ActiveAdminRole::CanCan::Ability
 
   def initialize(user)
   
@@ -10,8 +11,8 @@ class Ability
         can :manage, :all
       else
         can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "dispensary_admin"
-        can :create, DispensarySourceProduct
-        can :create, DspPrice
+        #can :manage, DispensarySourceProduct
+        #can :manage, DspPrice
         can :read, Product
         can :manage, AdminUser, id: user.id
       

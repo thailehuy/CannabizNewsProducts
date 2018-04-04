@@ -8,7 +8,19 @@ class AdminUser < ActiveRecord::Base
   belongs_to :dispensary
   has_one :dispensary
   
-  #after create, create a DispensarySource record with source - Dispensary (similar to weedmaps, leafly record)
-  #copy info from weedmaps and leafly record to this one
-  #use this dispensarysource for everything else - the dsp products and such
+  after_save :create_dispensary_source
+  def create_dispensary_source
+    if self.role != 99 && self.dispensary_id.present?
+      dsp_source = DispensarySource.where(dispensary_id: self.dispensary_id).
+                    order('last_menu_update DESC').first
+      source = Source.where(name: 'Self').where(source_type: 'Dispensary').first
+      cloned_dsp_source = dsp_source.clone
+      cloned_dsp_source.dispensary_id = self.dispensary_id
+      cloned_dsp_source.source_id = source.id
+      
+      unless cloned_dsp_source.save
+        puts "Dispensary Source Error: #{cloned_dsp_source.errors.messages}"
+      end
+    end
+  end
 end
