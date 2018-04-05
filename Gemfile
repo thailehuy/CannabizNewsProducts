@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
+
 #STEVE ADDITIONS:
 gem 'will_paginate', '3.0.7' # PAGINATION
 gem 'bootstrap-will_paginate', '0.0.10' # BOOTSTRAP STYLING
@@ -62,7 +64,7 @@ gem 'active_admin_role'
 gem 'active_skin'
 gem "active_admin_import"
 gem 'best_in_place', github: 'bernat/best_in_place'
-gem 'cancancan'
+gem 'cancancan', '2.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
