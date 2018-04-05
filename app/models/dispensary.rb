@@ -6,7 +6,6 @@ class Dispensary < ActiveRecord::Base
     validates :name, presence: true, length: {minimum: 1, maximum: 300}
     
     #admin
-    has_one :admin_user
     belongs_to :admin_user
     # scope :mine, -> { 
     #     AdminUser.where(:id => @current_admin_user.id).dispensaries.first

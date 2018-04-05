@@ -29,6 +29,12 @@ ActiveAdmin.register Dispensary, namespace: :dispensary_admin , as: "Dispensary"
 	#no filters
 	before_filter :skip_sidebar!, :only => :index
 
+	controller do
+		def scoped_collection
+			end_of_association_chain.where(admin_user_id: current_admin_user.id)
+		end
+	end
+
 	#scopes
 	scope_to :current_user
 	#scope :mine, default: true
